@@ -11,8 +11,8 @@ const patchSchema = z.object({
   endDate: z.string().datetime().optional().nullable()
 });
 
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-  const { id } = params;
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const ownership = await withOwnedRecord(id, (recordId) => Medication.findById(recordId));
   if ('error' in ownership) return ownership.error;
 
@@ -30,8 +30,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   return NextResponse.json(updated);
 }
 
-export async function DELETE(_: Request, { params }: { params: { id: string } }) {
-  const { id } = params;
+export async function DELETE(_: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const ownership = await withOwnedRecord(id, (recordId) => Medication.findById(recordId));
   if ('error' in ownership) return ownership.error;
 
