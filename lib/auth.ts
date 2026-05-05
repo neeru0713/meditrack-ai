@@ -25,7 +25,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!parsed.success) return null;
 
         await connectDB();
-        const user = await User.findOne({ email: parsed.data.email }).lean();
+  const user = await User.findOne({ email: parsed.data.email }).lean<any | null>();
         if (!user?.password) return null;
 
         const valid = await bcrypt.compare(parsed.data.password, user.password);

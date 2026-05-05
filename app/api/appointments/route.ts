@@ -16,7 +16,7 @@ export async function GET(req: Request) {
   try {
     const { targetUserId } = await resolveTargetUserId(new URL(req.url).searchParams);
     await connectDB();
-    const records = await Appointment.find({ userId: targetUserId }).sort({ scheduledAt: -1 }).lean();
+  const records = await Appointment.find({ userId: targetUserId }).sort({ scheduledAt: -1 }).lean<import('@/lib/models/Appointment').IAppointment[]>();
     return NextResponse.json(records);
   } catch (error) {
     const status = String(error).includes('FORBIDDEN') ? 403 : 401;

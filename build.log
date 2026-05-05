@@ -1,0 +1,29 @@
+
+> meditrack-ai@0.1.0 build
+> next build
+
+   ▲ Next.js 15.0.3
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/19) ...
+   Generating static pages (4/19) 
+   Generating static pages (9/19) 
+   Generating static pages (14/19) 
+Error occurred prerendering page "/". Read more: https://nextjs.org/docs/messages/prerender-error
+TypeError: Cannot read properties of undefined (reading 'entryCSSFiles')
+    at r_ (/Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:127:5173)
+    at J.preloadCallbacks (/Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:127:7837)
+    at rj (/Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:127:8824)
+    at /Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:127:6849
+    at /Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/next/dist/server/lib/trace/tracer.js:171:36
+    at NoopContextManager.with (/Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/@opentelemetry/api/build/src/context/NoopContextManager.js:25:19)
+    at ContextAPI.with (/Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/@opentelemetry/api/build/src/api/context.js:60:46)
+    at NoopTracer.startActiveSpan (/Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/@opentelemetry/api/build/src/trace/NoopTracer.js:65:31)
+    at ProxyTracer.startActiveSpan (/Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/@opentelemetry/api/build/src/trace/ProxyTracer.js:36:24)
+    at /Users/ritishgupta/Documents/healthcare-assignment/meditrack-ai/node_modules/next/dist/server/lib/trace/tracer.js:153:103
+Export encountered an error on /(dashboard)/page: /, exiting the build.
+ ⨯ Static worker exited with code: 1 and signal: null

@@ -15,7 +15,7 @@ export async function GET(req: Request) {
   try {
     const { targetUserId } = await resolveTargetUserId(new URL(req.url).searchParams);
     await connectDB();
-    const vitals = await Vital.find({ userId: targetUserId }).sort({ recordedAt: -1 }).lean();
+  const vitals = await Vital.find({ userId: targetUserId }).sort({ recordedAt: -1 }).lean<import('@/lib/models/Vital').IVital[]>();
     return NextResponse.json(vitals);
   } catch (error) {
     const status = String(error).includes('FORBIDDEN') ? 403 : 401;

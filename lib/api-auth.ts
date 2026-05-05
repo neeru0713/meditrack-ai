@@ -25,7 +25,7 @@ export async function canAccessUserRecords(actor: SessionUser, targetUserId: str
   if (actor.role === 'user') return actor.id === targetUserId;
 
   await connectDB();
-  const doctor = await User.findById(actor.id).select('assignedPatients').lean();
+  const doctor = await User.findById(actor.id).select('assignedPatients').lean<{ assignedPatients?: string[] } | null>();
   if (!doctor) return false;
 
   const assigned = (doctor.assignedPatients || []).map((id) => String(id));

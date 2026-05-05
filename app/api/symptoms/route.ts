@@ -15,7 +15,7 @@ export async function GET(req: Request) {
   try {
     const { targetUserId } = await resolveTargetUserId(new URL(req.url).searchParams);
     await connectDB();
-    const records = await Symptom.find({ userId: targetUserId }).sort({ recordedAt: -1 }).lean();
+  const records = await Symptom.find({ userId: targetUserId }).sort({ recordedAt: -1 }).lean<import('@/lib/models/Symptom').ISymptom[]>();
     return NextResponse.json(records);
   } catch (error) {
     const status = String(error).includes('FORBIDDEN') ? 403 : 401;

@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     const body = schema.parse(await req.json());
     await connectDB();
 
-    const exists = await User.findOne({ email: body.email.toLowerCase() }).lean();
+  const exists = await User.findOne({ email: body.email.toLowerCase() }).lean<import('@/lib/models/User').IUser | null>();
     if (exists) {
       return NextResponse.json({ error: 'Email already exists' }, { status: 409 });
     }

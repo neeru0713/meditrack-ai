@@ -24,7 +24,7 @@ export async function connectDB() {
   }
 
   if (!cache.promise) {
-    cache.promise = mongoose.connect(MONGODB_URI, {
+    cache.promise = mongoose.connect(MONGODB_URI as string, {
       dbName: 'meditrack'
     });
   }

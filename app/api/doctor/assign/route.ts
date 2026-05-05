@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { Types } from 'mongoose';
 import { z } from 'zod';
 import { connectDB } from '@/lib/db';
-import { User } from '@/lib/models/User';
+import { User, IUser } from '@/lib/models/User';
 import { requireSessionUser } from '@/lib/api-auth';
 
 const schema = z.object({
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
     await connectDB();
 
-    const patient = await User.findById(body.patientId).lean();
+    const patient = await User.findById(body.patientId).lean<IUser | null>();
     if (!patient || patient.role !== 'user') {
       return NextResponse.json({ error: 'Patient not found' }, { status: 404 });
     }
